@@ -1,0 +1,17 @@
+export default [ 
+  { name: "alpaca", thumb: "/assets/thumb/alpaca.jpg", medium: "/assets/medium/alpaca.jpg", full: "/assets/full/alpaca.jpg" },
+  { name: "bee", thumb: "/assets/thumb/bee.jpg", medium: "/assets/medium/bee.jpg", full: "/assets/full/bee.jpg" },
+  { name: "butterfly", thumb: "/assets/thumb/butterfly.jpg", medium: "/assets/medium/butterfly.jpg", full: "/assets/full/butterfly.jpg" },
+  { name: "cat", thumb: "/assets/thumb/cat.jpg", medium: "/assets/medium/cat.jpg", full: "/assets/full/cat.jpg" },
+  { name: "cheetah", thumb: "/assets/thumb/cheetah.jpg", medium: "/assets/medium/cheetah.jpg", full: "/assets/full/cheetah.jpg" },
+  { name: "horse", thumb: "/assets/thumb/horse.jpg", medium: "/assets/medium/horse.jpg", full: "/assets/full/horse.jpg" },
+  { name: "hummingbird", thumb: "/assets/thumb/hummingbird.jpg", medium: "/assets/medium/hummingbird.jpg", full: "/assets/full/hummingbird.jpg" },
+  { name: "kookaburra", thumb: "/assets/thumb/kookaburra.jpg", medium: "/assets/medium/kookaburra.jpg", full: "/assets/full/kookaburra.jpg" },
+  { name: "lizard", thumb: "/assets/thumb/lizard.jpg", medium: "/assets/medium/lizard.jpg", full: "/assets/full/lizard.jpg" },
+  { name: "muskrat", thumb: "/assets/thumb/muskrat.jpg", medium: "/assets/medium/muskrat.jpg", full: "/assets/full/muskrat.jpg" },
+  { name: "owl", thumb: "/assets/thumb/owl.jpg", medium: "/assets/medium/owl.jpg", full: "/assets/full/owl.jpg" },
+  { name: "squirrel", thumb: "/assets/thumb/squirrel.jpg", medium: "/assets/medium/squirrel.jpg", full: "/assets/full/squirrel.jpg" },
+  { name: "swan", thumb: "/assets/thumb/swan.jpg", medium: "/assets/medium/swan.jpg", full: "/assets/full/swan.jpg" },
+  { name: "turtle", thumb: "/assets/thumb/turtle.jpg", medium: "/assets/medium/turtle.jpg", full: "/assets/full/turtle.jpg" },
+  { name: "zebra", thumb: "/assets/thumb/zebra.jpg", medium: "/assets/medium/zebra.jpg", full: "/assets/full/zebra.jpg" },
+ ] 

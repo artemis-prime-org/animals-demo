@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { inject, observer } from 'mobx-react'
 
 import { 
   Image, 
@@ -19,61 +18,15 @@ import {
 
 import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-
 import { Row, Grid } from "react-native-easy-grid"
 
 import { Paragraph } from '../components'
 import { NavProps } from '../types'
 import theme from '../style/theme'
 
-/*
-export default inject('store')(observer(({ navigation, store }: NavProps) => {
-
-  return (
-    <FlatList 
-      data={store.movieStore.movies}
-      renderItem={(movie) => (<MovieCard movie={movie}/>)}
-      keyExtractor={movie => movie.movieSlug}
-      numColumns={3}
-    />
-  )
-}))
-*/
-/*
-export default inject('store')(observer(({ navigation, store }: NavProps) => {
-
-  return (
-    <ScrollView contentContainerStyle={s.inner}>
-      {store.movieStore.movies.map((m, i) => <MovieCard movie={m} key={i} />)}
-    </ScrollView>
-  )
-}))
-*/
-/*
-export default inject('store')(observer(({ navigation, store }: NavProps) => {
-
-  return (
-    <FlatGrid
-      itemDimension={130}
-      items={store.movieStore.movies}
-      renderItem={(movie) => (<MovieCard movie={movie}/>)}
-      spacing={10}
-      style={s.gridView}
-    />
-  )
-}))
-*/
-/*
-      {store.movieStore.filteredMovies.map((m, i) => (
-        <MovieCard movie={m} key={i} />
-      ))}
-*/
-//          .map((m, i) => <MovieCard movie={m} key={i} />)}
- 
-export default inject('store')(observer(({ navigation, store }: NavProps) => {
+export default ({ navigation, store }: NavProps) => {
 
   const [activeMovie, setActiveMovie] = useState(null)
-
 
   let setsOfThree = []
   let currentArray = undefined
@@ -106,6 +59,7 @@ export default inject('store')(observer(({ navigation, store }: NavProps) => {
             <Text style={s.detailStatusOuter} ><Text style={s.detailStatusLabel} >Status: </Text>{activeMovie.trading ? 'Trading' : 'Funding'}</Text>
             <Paragraph style={s.description} >{activeMovie.shortDescription}</Paragraph>
             <View style={s.buttonsOuter}>
+                {/* TODO / temp: For now, just close the modal when we press any of the buttons :) */}
               <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="info-circle" size={25} />} />
               <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<Ionicons name="md-stats" size={25} />} />
               <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<MaterialIcons name="favorite" size={25} />} />
@@ -116,7 +70,7 @@ export default inject('store')(observer(({ navigation, store }: NavProps) => {
       </Modal>
     </Portal>
   )
-}))
+}
 
 
 const IconButton = ({icon, buttonStyle, onPress, children, textStyle}) => {
@@ -130,8 +84,6 @@ const IconButton = ({icon, buttonStyle, onPress, children, textStyle}) => {
 
 
 const MovieCard = ({movie, onPress, outerStyle}) => {
-//  const heightStyle = (height) ? { height: height, width: 'auto' } : {}
-  //console.log(movie.posterImg)
 
   return (
     <TouchableOpacity onPress={onPress} style={outerStyle}>
@@ -143,17 +95,13 @@ const MovieCard = ({movie, onPress, outerStyle}) => {
 
 
 const s = StyleSheet.create({
-  
 
   inner: {
     paddingTop: theme.spacing(3),
     flex: 1,
     width: '100%',
     alignItems: 'center',
-    //flexWrap: 'wrap',
     justifyContent: 'flex-start',
-    //paddingBottom: theme.spacing(4),
-    //padding: theme.spacing(0.3)
   },
 
   grid: {
@@ -162,7 +110,6 @@ const s = StyleSheet.create({
   row: {
     margin: 0,
     marginBottom: 5,
-    //alignItems: 'stretch',
     height: 120
   },
   outerStyle: {
@@ -177,7 +124,6 @@ const s = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: '#d6d7da',
-    //flex: 1,
     flexDirection: 'column', 
     justifyContent: 'flex-start', 
     paddingLeft: 16,
@@ -210,10 +156,6 @@ const s = StyleSheet.create({
     marginBottom: 16
   },
   detailButton: {
-    //marginRight: 10,
-    //width: 40,
-    //height: 40,
-    //marginRight: 10,
     borderColor: theme.colors.primary,
     borderRadius: 20,
     borderWidth: 1,
@@ -222,7 +164,6 @@ const s = StyleSheet.create({
   icon: {
     position: 'relative',
     left: 15,
-    //marginRight: 5,
     padding: 0
   },
   tradeButton: {
@@ -234,11 +175,9 @@ const s = StyleSheet.create({
     textTransform: 'none'
   },
   tradeIcon: {
-//    justifyContent:  'center',
     color: '#eee',
     marginRight: 4,
     height: 15,
   }
-
 })
 

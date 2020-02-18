@@ -13,7 +13,7 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
-      "image": "./assets/esx-splash.png",
+      "image": "./assets/animals-splash.png",
       "resizeMode": "cover",
       "backgroundColor": "#000"
     },
@@ -31,11 +31,5 @@
       "userInterfaceStyle": "light"
     },
     "description": ""
-    /*
-    "packagerOpts": {
-      "config": "metro.config.js",
-      "sourceExts": ["js", "jsx", "ts", "tsx", "svg"]
-    }
-    */
   }
 }
