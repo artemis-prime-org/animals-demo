@@ -4,13 +4,12 @@ import {
   View
 } from 'react-native'
 
-import { Button, Logo } from '../components'
+import { Button } from '../components'
 import { NavProps } from '../types'
 import theme from '../style/theme'
 
 export default ({ navigation }: NavProps) => (
   <View style={s.inner} >
-    <Logo width={100} height={100 * 127 / 220}/>
     <View>
       <Button mode="contained" onPress={() => navigation.navigate('LoginScreen')}>
         Login

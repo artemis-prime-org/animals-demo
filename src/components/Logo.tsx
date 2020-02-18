@@ -6,7 +6,8 @@ import {
 } from 'react-native'
 
 const img = {
-  source: require('../../assets/esx-logo.png'),
+    // TODO
+  //source: require('../../assets/icon@3x.png'),
   w: 220,
   h: 127
 }

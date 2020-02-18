@@ -9,49 +9,59 @@ import {
   TouchableOpacity 
 } from 'react-native'
 
+/*
 import {
   Modal, 
   Portal,
   Button
-
 } from 'react-native-paper'
 
 import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
+*/
+
 
 import { Row, Grid } from "react-native-easy-grid"
 
-import { Paragraph } from '../components'
+//import { Paragraph } from '../components'
 import { NavProps } from '../types'
 import theme from '../style/theme'
 
-export default ({ navigation, store }: NavProps) => {
+import animals from '../../data/animals-data'
 
-  const [activeMovie, setActiveMovie] = useState(null)
+export default (props: NavProps) => {
 
   let setsOfThree = []
   let currentArray = undefined
-  for (let i = 0; i < store.movieStore.movies.length; i++) {
+  for (let i = 0; i < animals.length; i++) {
     if (i % 3 == 0) {
       currentArray = []
       setsOfThree.push(currentArray)
     }
-    currentArray.push(store.movieStore.movies[i])
+    currentArray.push(animals[i])
   }
 
+    // https://stackoverflow.com/questions/39548664/react-native-scroll-view-not-scrolling/39548939
   return (
-    <Portal >
-    <ScrollView contentContainerStyle={s.inner}>
+    <ScrollView contentContainerStyle={s.scrollViewContainer} scrollEnabled={true}>
       <Grid style={s.grid}>
       {setsOfThree.map((three, i) => (
         <Row key={i} style={s.row}>
-        {three.map((m, j) => (
-          <MovieCard onPress={() => setActiveMovie(m)} movie={m} outerStyle={s.outerStyle} key={j}/>
+        {three.map((e, j) => (
+          <ElementCard onPress={() => {console.log(e.name + " clicked!")}} element={e} style={s.elementCard} key={j}/>
         ))}
         </Row>
       ))}
       </Grid>
     </ScrollView>
-      <Modal visible={activeMovie != null} onDismiss={() => setActiveMovie(null)} contentContainerStyle={s.modalStyle}>
+  )
+}
+
+/*
+    <Portal >
+
+
+
+    <Modal visible={activeMovie != null} onDismiss={() => setActiveMovie(null)} contentContainerStyle={s.modalStyle}>
         {activeMovie && (
           <>
             <Image source={{uri: activeMovie.heroImg}} style={{width: 'auto', height: 150}}/>
@@ -59,62 +69,57 @@ export default ({ navigation, store }: NavProps) => {
             <Text style={s.detailStatusOuter} ><Text style={s.detailStatusLabel} >Status: </Text>{activeMovie.trading ? 'Trading' : 'Funding'}</Text>
             <Paragraph style={s.description} >{activeMovie.shortDescription}</Paragraph>
             <View style={s.buttonsOuter}>
-                {/* TODO / temp: For now, just close the modal when we press any of the buttons :) */}
-              <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="info-circle" size={25} />} />
-              <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<Ionicons name="md-stats" size={25} />} />
-              <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<MaterialIcons name="favorite" size={25} />} />
-            </View>
-            <IconButton buttonStyle={s.tradeButton} textStyle={s.tradeText} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="dollar" size={25} style={s.tradeIcon}/>} >Trade</IconButton>
-          </>
-        )}
-      </Modal>
+                <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="info-circle" size={25} />} />
+                <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<Ionicons name="md-stats" size={25} />} />
+                <IconButton buttonStyle={s.detailButton} onPress={() => setActiveMovie(null)} icon={<MaterialIcons name="favorite" size={25} />} />
+              </View>
+              <IconButton buttonStyle={s.tradeButton} textStyle={s.tradeText} onPress={() => setActiveMovie(null)} icon={<FontAwesome name="dollar" size={25} style={s.tradeIcon}/>} >Trade</IconButton>
+            </>
+          )}
+        </Modal>
     </Portal>
-  )
-}
+
+    
+
+const IconButton = ({icon, buttonStyle, onPress, children, textStyle}) =>  (
+  <Button style={buttonStyle} onPress={onPress} >
+    {icon}{children && <Text style={textStyle}>{children}</Text>}
+  </Button>
+)
 
 
-const IconButton = ({icon, buttonStyle, onPress, children, textStyle}) => {
-   
-  return (
-    <Button style={buttonStyle} onPress={onPress} >
-      {icon}{children && <Text style={textStyle}>{children}</Text>}
-    </Button>
-  )
-}
+*/
 
 
-const MovieCard = ({movie, onPress, outerStyle}) => {
 
-  return (
-    <TouchableOpacity onPress={onPress} style={outerStyle}>
-      <Image source={{uri: movie.posterImg}} style={{width: 100, height: 120, marginRight: 5}} />
-    </TouchableOpacity>
-  )
-}
-
+const ElementCard = ({element, onPress, style}) => (
+  <TouchableOpacity onPress={onPress} style={style}>
+    <Image source={element.thumb} style={{width: 100}} />
+  </TouchableOpacity>
+)
 
 
 const s = StyleSheet.create({
 
-  inner: {
+  scrollViewContainer: {
     paddingTop: theme.spacing(3),
-    flex: 1,
+    flexGrow: 1,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'flex-start',
   },
 
   grid: {
-    justifyContent: 'flex-start',
   },
   row: {
-    margin: 0,
+    height: 'auto',
     marginBottom: 5,
-    height: 120
   },
-  outerStyle: {
+  elementCard: {
+    marginRight: 5
+  },
 
-  },
+  /*
   modalStyle: {
     top: 0,
     left: '10%',
@@ -179,5 +184,6 @@ const s = StyleSheet.create({
     marginRight: 4,
     height: 15,
   }
+  */
 })
 

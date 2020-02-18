@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Entertainment Stock Exchange Demo App",
-    "slug": "esx",
+    "name": "Favorite Animals Demo App",
+    "slug": "animals",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
